@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class Cwiczenie3 {
     public WebDriver driver ;
 
-    BeforeClass
+    @BeforeClass
     public void beforeClass() {
 
         String driverPath = "C:\\Users\\samekmar\\IdeaProjects\\SeleniumMobileProjekt\\src\\main\\resources\\geckodriver.exe";
@@ -30,34 +30,25 @@ public class Cwiczenie3 {
     }
 
     @Test
-    public void automatyzacjaStrony() {
+    public void autoStrony() {
         driver.get("http://51.83.43.62/practiseform/");
 
-        //1
-
+        //A
         WebElement firstName = driver.findElement(By.id("field1"));
         WebElement firstNameXpath = driver.findElement(By.xpath("//input[@placeholder='Type first name...']"));
-
-        //String placeholder = firstName.getAttribute("placeholder");
-        //Assert.assertEquals(placeholder, "Type first name...", "Błędna wartość w polu FirstName");
-
         firstNameXpath.clear();
-        firstNameXpath.sendKeys("Kamil");
+        firstNameXpath.sendKeys("Marek");
 
-
-        //2
-
+        //B
         WebElement chbOption2 = driver.findElement(By.id("field4-2"));
         WebElement chbOption1 = driver.findElement(By.id("field4-1"));
-
         if (chbOption2.isSelected()) {
             chbOption2.click();
             if (!chbOption1.isSelected())
                 chbOption1.click();
         }
 
-        //3
-
+        //C
         WebElement inpAdd = driver.findElement(By.id("field7"));
         String placeholder2 = inpAdd.getText();
         System.out.println(" check " + placeholder2);
@@ -66,16 +57,13 @@ public class Cwiczenie3 {
             inpAdd.sendKeys("Szkolenie Java-Selenium");
         }
 
-        //4
-
+        //D
         WebElement btnSubmit = driver.findElement(By.name("submit"));
-
         if (btnSubmit.isEnabled()) {
             btnSubmit.click();
         }
 
-        //5
-
+        //E
         List<WebElement> lista = driver.findElements(By.className("error"));
         System.out.println("Ilość błędów formularza: " + lista.size());
     }
