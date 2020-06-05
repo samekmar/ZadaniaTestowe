@@ -30,7 +30,7 @@ public class Cwiczenie4 {
     }
 
         @Test
-        public void automatyzacjaStrony() {
+        public void automatyzacjaStrony() throws InterruptedException {
             driver.get("http://51.83.43.62/practiseform/");
 
             WebElement lstCity = driver.findElement(By.name("selcapital"));
