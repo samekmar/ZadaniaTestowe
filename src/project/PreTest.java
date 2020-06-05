@@ -1,6 +1,7 @@
 package project;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -46,5 +47,15 @@ public class PreTest {
         userField.sendKeys(email);
         passwordField.sendKeys(password);
         loginButton.click();
+    }
+
+    @Test
+    public void findMail() {
+        driver.navigate().refresh();
+        WebElement searchKey = driver.findElement(By.id("searchInput"));
+        searchKey.sendKeys(keyWord);
+        searchKey.sendKeys(Keys.RETURN);
+        WebElement setAll = driver.findElement(By.xpath("/html/body/div[2]/nh-app-view/div/div/div/div[1]/div/div/div/div/div[2]/div[1]/div[1]/nh-checkbox/div"));
+
     }
 }
