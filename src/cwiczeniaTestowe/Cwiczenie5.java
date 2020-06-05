@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -21,19 +22,20 @@ public class Cwiczenie5 {
 
     @BeforeClass
     public void setUp() {
-        // Zdefiniowanie ścieżki dla zewnętrznego drivera przeglądarki Chrome
-        System.setProperty("webdriver.chrome.driver", "C:/Users/samekmar/Downloads/chromedriver.exe");
 
-        driver = new ChromeDriver(); // utworzenie obiektu i inicjalizacja przeglądarką Chrome
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); // ustawienie czasu oczekiwania na elementy
-        driver.manage().window().maximize(); // maksymalizacja okna
-
-        driver.get("https://testerzy.pl/"); // wejście na stronę testerzy.pl
+        String driverPath = "C:\\Users\\samekmar\\IdeaProjects\\SeleniumMobileProjekt\\src\\main\\resources\\geckodriver.exe";
+        System.setProperty("webdriver.gecko.driver", driverPath);
+        driver = new FirefoxDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+        // wejście na stronę testerzy.pl
+        driver.get("https://testerzy.pl/");
     }
 
     @AfterClass
-    public void tearDown() {
-        driver.quit(); // zabicie drivera i zamknięcie przeglądarki
+    public void closeDown() {
+        // wyłączenie drivera i zamknięcie przeglądarki
+        driver.quit();
     }
 
     @Test
@@ -47,8 +49,8 @@ public class Cwiczenie5 {
 
     @Test
     public void test2() {
+        // kliknięcie w element NEWS o adresie XPATH
         driver.findElement(By.xpath("//html/body/nav/div/ul[1]/li[3]/a")).click();
-        // klikam w element o podanym adresie XPATH - spodziewany element to NEWS
 
         Assert.assertEquals(driver.getTitle(), "News - testerzy.pl - Lepsza jakość testowania");
         // sprawdzenie czy tytuł strony pobrany z driver.getTitle()
@@ -59,8 +61,7 @@ public class Cwiczenie5 {
 
     @Test
     public void test3() {
-
-        // Klikanie w kontakt
+        // kliknięcie w element NEWS o adresie XPATH
         driver.findElement(By.xpath("//html/body/header/nav/div/ul[2]/li[5]/a")).click();
 
         // pobranie wszystkich opcji selecta z tematem wiadomości
