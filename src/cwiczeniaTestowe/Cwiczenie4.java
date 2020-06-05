@@ -30,7 +30,7 @@ public class Cwiczenie4 {
     }
 
         @Test
-        public void automatyzacjaStrony() throws InterruptedException {
+        public void autoStrony() throws InterruptedException {
             driver.get("http://51.83.43.62/practiseform/");
 
             WebElement lstCity = driver.findElement(By.name("selcapital"));
@@ -44,10 +44,7 @@ public class Cwiczenie4 {
                 System.out.println("VisibleText: "+ visibleText);
                 System.out.println("Option value: "+optionValue);
             }
-            Thread.sleep(2000);
-            listaWyboru.selectByVisibleText("Moskwa");
-            Thread.sleep(2000);
-            listaWyboru.selectByIndex();
-            Thread.sleep(2000);
+            Thread.sleep(6000);
+
         }
 }
