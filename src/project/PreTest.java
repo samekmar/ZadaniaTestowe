@@ -32,6 +32,7 @@ public class PreTest {
         driver.manage().window().maximize();
         // wejście na stronę poczty WP
         driver.get(emailURL);
+
     }
 
     @AfterTest
